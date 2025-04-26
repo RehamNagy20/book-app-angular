@@ -1,0 +1,21 @@
+.book {
+    padding: 1rem;
+    border-radius: 8px;
+    max-height: 60vh;
+    overflow: auto;
+    background-color: #6467ac;
+}
+h2 {
+    margin: 0;
+    font-size: 0.9rem;
+    width: 60%;
+    text-wrap: balance;
+}
+
+#fallback {
+    font-weight: bold;
+    font-size: 1.15rem;
+    margin: 0;
+    text-align: center;
+  }
+ 

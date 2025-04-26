@@ -1,1 +1,13 @@
-<p>book-detail works!</p>
+
+    @if(book){
+        <div class="book">   
+            <h2>{{book.title}}</h2>
+            <p>Auther: {{book.author}}</p>
+            <p>Genre: {{book.genre}}</p>
+            <p>Price: {{book.price}}</p>
+            <p>Published Year: {{book.publishedYear}}</p>
+        </div>
+    }@else{
+        <p>Select a book to see it's details</p>
+    }
+
