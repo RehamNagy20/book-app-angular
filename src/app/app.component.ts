@@ -4,15 +4,9 @@ import { Book } from './book.model';
 @Component({
   selector: 'app-root',
   standalone:false,
- // imports: [HeaderComponent, BookListComponent, BookDetailComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
   title = 'book-app';
-
-  selectedBook?:Book;
-  getSelectedBook(book:Book){
-   this.selectedBook=book;
-  }
 }

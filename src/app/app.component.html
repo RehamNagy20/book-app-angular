@@ -1,7 +1,5 @@
 <app-header/>
 <main>
-<app-book-list id="books"  (book)="getSelectedBook($event)"/>
-<app-book-detail [book]="selectedBook" />
+    <app-book-list id="books"/>
+    <router-outlet></router-outlet>
 </main>
- 
-
