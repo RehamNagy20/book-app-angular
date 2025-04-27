@@ -15,7 +15,7 @@ books!:Book[];
   this.books=bookService.getBooks();
  }
  selectedBook(book:Book){
-  this.router.navigate(['/',book.id]);
+  this.router.navigate(['/book',book.id]);
  }
 }
 
