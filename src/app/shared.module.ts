@@ -8,11 +8,22 @@ import { RouterLink, RouterModule, RouterOutlet } from "@angular/router";
 import { BookModule } from "./book-list/book.module";
 import { UserModule } from "./user/user.module";
 import { AppRoutingModule } from "./app-routing.module";
-
+import { HttpClientModule } from "@angular/common/http";
+import { AuthComponent } from "./auth/auth.component";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { AngularFireModule } from "@angular/fire/compat";
+import { environment } from "../environments/environment";
 @NgModule({
-    declarations:[AppComponent,HeaderComponent],
+    declarations:[AppComponent,HeaderComponent,AuthComponent],
     bootstrap:[AppComponent],
-    imports:[BrowserModule,BookModule,UserModule,RouterOutlet,RouterLink,AppRoutingModule,RouterModule]
+    imports:[BrowserModule,
+        FormsModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        AngularFireModule.initializeApp(environment.firebaseConfig),
+        BookModule,UserModule,
+        RouterOutlet,RouterLink,
+        AppRoutingModule,RouterModule]
 })
 export class SharedModule{
 

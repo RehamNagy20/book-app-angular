@@ -1,11 +1,77 @@
-
+<a routerLink="/">Book List</a>
     @if(book){
         <div class="book">   
-            <h2>{{book.title}}</h2>
-            <p>Auther: {{book.author}}</p>
+            <h2>{{book.title |uppercase |shorten:10}}</h2>
+            <p>Auther: {{book.auther}}</p>
             <p>Genre: {{book.genre}}</p>
-            <p>Price: {{book.price}}</p>
-            <p>Published Year: {{book.publishedYear}}</p>
+            <p>Price: {{book.price |currency}}</p>
+            <p>Published Year: {{book.publishedDate }}</p>
+            <button class="btn" (click)="onDeleteBook()">Delete Book</button>
+        </div>
+        
+            <div class="container"> 
+                
+                  <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+                    <div id="book-data" ngModelGroup="bookData" #bookData="ngModelGroup">
+                      <div class="form-group">
+                        <label for="title">Title</label>
+                        <input type="text" 
+                        id="title" 
+                        class="form-control"
+                        ngModel
+                        name="title"
+                        required>
+                      </div>
+                      <br>
+                      <div class="form-group">
+                        <label for="auther">Auther</label>
+                        <input 
+                        type="text"
+                         id="auther" 
+                         class="form-control"
+                         ngModel
+                         name="auther"
+                         required>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                          <label for="genre">Genre</label>
+                          <input 
+                          type="text"
+                           id="genre" 
+                           ngModel
+                           name="genre"
+                           required>
+                          </div>
+                          <br>
+                          <div>
+                              <label for="price">Price</label>
+                              <input 
+                              type="text"
+                               id="price" 
+                               ngModel
+                               name="price"
+                               required>
+                           </div>
+                           <br>
+                           <div>
+                              <label for="publishedDate">Published Year</label>
+                              <input 
+                              type="text"
+                               id="publishedDate" 
+                               class="form-control"
+                               ngModel
+                               name="publishedDate"
+                               required>
+                           </div>
+                    </div>
+                    <br>
+                    <button 
+                    class="btn"
+                     type="submit"
+                     [disabled]="!f.valid">Update Book</button>
+                  </form>
+               
         </div>
     }@else{
         <p>Select a book to see it's details</p>

@@ -1,5 +1,5 @@
-import { Component,Input,inject } from '@angular/core';
-import { Book } from './book.model';
+import { Component } from '@angular/core';
+
 
 @Component({
   selector: 'app-root',

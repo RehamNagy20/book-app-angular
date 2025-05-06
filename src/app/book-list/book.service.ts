@@ -1,54 +1,43 @@
+import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
+
+import { Book } from "./book.model";
+import { addDoc, collection, collectionData, deleteDoc, doc, docData, Firestore} from "@angular/fire/firestore";
+import { updateDoc } from "firebase/firestore";
 
 @Injectable({providedIn:'root'})
 export class BookService{
-    private book_list=[
-        {
-          id: "1",
-          title: "The Midnight Library",
-          author: "Matt Haig",
-          genre: "Fiction",
-          price: "14.99$",
-          publishedYear: "2020",
-        },
-        {
-          id: "2",
-          title: "Atomic Habits",
-          author: "James Clear",
-          genre: "Self-Help",
-          price: "18.5$",
-          publishedYear: "2018",
-        },
-        {
-          id: "3",
-          title: "Educated",
-          author: "Tara Westover",
-          genre: "Memoir",
-          price: "16.0$",
-          publishedYear: "2018",
-        },
-        {
-          id: "4",
-          title: "Dune",
-          author: "Frank Herbert",
-          genre: "Science Fiction",
-          price: "12.75$",
-          publishedYear: "1965",
-        },
-        {
-          id: "5",
-          title: "Becoming",
-          author: "Michelle Obama",
-          genre: "Biography",
-          price: "20.0$",
-          publishedYear: "2018",
-        }
-    ]
-    getBooks(){
-        return this.book_list;
-    }
-    getBookById(bookId:string){
-        return this.book_list.find((book)=> book.id ===bookId);
-    }
+    private collectionName = 'books';
+    constructor(
+      private firesotre:Firestore){}
     
+    createBook(book:Book):Promise<void>{
+        return addDoc(collection(this.firesotre,this.collectionName),book).then((docRef) => {
+            console.log("Document written with ID: ", docRef.id);
+          }).catch((error) => {
+            console.error("Error adding document: ", error);
+          });
+    }
+    fetchBooks():Observable<Book[]>{
+        return collectionData( collection(this.firesotre,this.collectionName), 
+        { idField: 'id' }) as Observable<Book[]>;
+     
+  }
+  
+    fetchBookById(bookId:string):Observable<Book>{
+      return docData(doc(this.firesotre,`${this.collectionName}/${bookId}`)
+        , { idField: 'id' }) as Observable<Book>;
+  }
+
+  updateBook(bookId:string,book:any):Promise<void>{
+    return updateDoc(
+      doc(this.firesotre,`${this.collectionName}/${bookId}`)
+    ,book);
+  }
+  deleteBook(bookId:string):Promise<void>{
+    return deleteDoc(
+      doc(this.firesotre,`${this.collectionName}/${bookId}`)
+    );
+  }
 }

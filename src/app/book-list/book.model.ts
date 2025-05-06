@@ -1,8 +1,8 @@
 export interface Book{
-    id:string,
+    id?:string,
     title:string,
-    author:string,
+    auther:string,
     genre:string,
     price:string,
-    publishedYear:string
+    publishedDate: Date
   }
