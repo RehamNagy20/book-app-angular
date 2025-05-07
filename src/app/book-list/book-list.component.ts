@@ -1,4 +1,4 @@
-import { Component,ViewChild} from '@angular/core';
+import { Component,OnInit,ViewChild} from '@angular/core';
 import type { Book } from './book.model';
 import { BookService } from './book.service';
 import { Router } from '@angular/router';
@@ -11,9 +11,9 @@ import { NgForm } from '@angular/forms';
   templateUrl: './book-list.component.html',
   styleUrl: './book-list.component.css'
 })
-export class BookListComponent {
+export class BookListComponent implements OnInit {
     ngOnInit() {
-        throw new Error('Method not implemented.');
+        //throw new Error('Method not implemented.');
     }
 
   @ViewChild ('f') signupForm!:NgForm;

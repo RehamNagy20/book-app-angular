@@ -5,7 +5,6 @@ import { AppComponent } from "./app.component";
 import { HeaderComponent } from "./header/header.component";
 import { RouterLink, RouterModule, RouterOutlet } from "@angular/router";
 
-import { BookModule } from "./book-list/book.module";
 import { UserModule } from "./user/user.module";
 import { AppRoutingModule } from "./app-routing.module";
 import { HttpClientModule } from "@angular/common/http";
@@ -21,7 +20,7 @@ import { environment } from "../environments/environment";
         ReactiveFormsModule,
         HttpClientModule,
         AngularFireModule.initializeApp(environment.firebaseConfig),
-        BookModule,UserModule,
+        UserModule,
         RouterOutlet,RouterLink,
         AppRoutingModule,RouterModule]
 })

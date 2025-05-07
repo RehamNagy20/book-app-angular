@@ -3,6 +3,7 @@ import type { Book } from '../book-list/book.model';
 import { ActivatedRoute } from '@angular/router';
 import { BookService } from '../book-list/book.service';
 import { NgForm } from '@angular/forms';
+import { docData } from '@angular/fire/firestore';
 @Component({
   selector: 'app-book-detail',
   standalone:false,
@@ -30,10 +31,9 @@ export class BookDetailComponent {
       this.bookId = paramMap.get('id')!;
     });
     this.bookService.fetchBookById(this.bookId).subscribe((book) => {
-      this.book = book; 
+      this.book = book;   
     });
   }
-
   onDeleteBook(){
     this.bookService.deleteBook(this.bookId).then(() => {
       console.log("Document deleted successfully!");
