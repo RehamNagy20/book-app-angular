@@ -13,13 +13,14 @@ import { getFirestore } from "firebase/firestore";
 import { BookService } from "./book.service";
 import { CommonModule } from "@angular/common";
 import { BookRoutingModule } from "./book-routing.module";
+import { AddBookComponent } from "../add-book/add-book.component";
 
 @NgModule({
     declarations:[BookListComponent,BookDetailComponent],
-    imports:[CommonModule,
-        FormsModule,
-        RouterLink,
-        ShortenPipe,BookRoutingModule],
+    imports: [CommonModule,AddBookComponent,
+    FormsModule,
+    RouterLink,
+    ShortenPipe, BookRoutingModule, AddBookComponent],
     providers: [
         provideFirebaseApp(() =>
             initializeApp(environment.firebaseConfig)),

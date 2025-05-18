@@ -22,19 +22,8 @@ import { NgForm } from '@angular/forms';
  */
 export class BookListComponent implements OnInit {
     
-
-  @ViewChild ('f') signupForm!:NgForm;
   books!:Book[];
-  book:Book={
-    id: '',
-    title: '',
-    auther: '',
-    genre: '',
-    price: '',
-    publishedDate: new Date()
-  };
   
-  submitted=false;
    /**
    * Creates an instance of BookListComponent.
    * 
@@ -56,17 +45,9 @@ export class BookListComponent implements OnInit {
  selectedBook(book:Book){
   this.router.navigate(['/book',book.id]);
  }
- onSubmit(form:NgForm){
-  this.submitted=true;
-  this.book.title=this.signupForm.value.bookData.title;
-  this.book.auther=this.signupForm.value.bookData.auther;
-  this.book.genre=this.signupForm.value.bookData.genre;
-  this.book.price=this.signupForm.value.bookData.price;
-  this.book.publishedDate=new Date(this.signupForm.value.bookData.publishedDate);
-  console.log(this.signupForm.value);
-  this.signupForm.reset();
-  this.bookService.createBook(this.book);
-  }
+ onAddBook(book:Book){
+  this.bookService.createBook(book);
+ }
   
 }
 

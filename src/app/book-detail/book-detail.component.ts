@@ -49,15 +49,7 @@ export class BookDetailComponent {
       console.error("Error removing document: ", error);
     });
   }
-  onSubmit(form:NgForm){
-    this.submitted=true;
-    this.book1.title=this.signupForm.value.bookData.title;
-    this.book1.auther=this.signupForm.value.bookData.auther;
-    this.book1.genre=this.signupForm.value.bookData.genre;
-    this.book1.price=this.signupForm.value.bookData.price;
-    this.book1.publishedDate=new Date(this.signupForm.value.bookData.publishedDate);
-    console.log(this.signupForm.value);
-    this.signupForm.reset();
-    this.bookService.updateBook(this.bookId,this.book1);
-    }
-}
+  onEditBook(book:Book){
+     this.bookService.updateBook(this.bookId,book);
+  }
+ }
