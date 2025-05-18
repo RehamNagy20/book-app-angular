@@ -1,11 +1,13 @@
-import { TestBed } from '@angular/core/testing';
+import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { BookListComponent } from './book-list.component';
+// Update the path below if BookService is located elsewhere, e.g.:
 import { BookService } from './book.service';
-import { NgForm } from '@angular/forms';
-describe('BookListComponent', () => {
-   let component: BookListComponent;
-   let bookService: BookService;
-    let form: NgForm;
+
+
+
+let component: BookListComponent;
+let bookService: BookService;
+
    beforeEach(() => {
        TestBed.configureTestingModule({
            declarations: [BookListComponent],
@@ -30,5 +32,5 @@ describe('BookListComponent', () => {
 
  
    
-});
+
 

@@ -34,6 +34,9 @@ header {
     font-size: 0.8rem;
     text-wrap: balance;
   }
+  ul{
+    list-style: none;;
+  }
   
   @media (min-width: 768px) {
     header {

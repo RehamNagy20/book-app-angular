@@ -10,7 +10,6 @@
         </div>
         
             <div class="container"> 
-                
                   <form (ngSubmit)="onSubmit(f)" #f="ngForm">
                     <div id="book-data" ngModelGroup="bookData" #bookData="ngModelGroup">
                       <div class="form-group">
@@ -20,6 +19,7 @@
                         class="form-control"
                         ngModel
                         name="title"
+                        #title="ngModel"
                         required>
                       </div>
                       <br>
@@ -31,6 +31,7 @@
                          class="form-control"
                          ngModel
                          name="auther"
+                         #auther="ngModel"
                          required>
                         </div>
                         <br>
@@ -41,6 +42,7 @@
                            id="genre" 
                            ngModel
                            name="genre"
+                           #genre="ngModel"
                            required>
                           </div>
                           <br>
@@ -49,6 +51,7 @@
                               <input 
                               type="text"
                                id="price" 
+                               #price="ngModel"
                                ngModel
                                name="price"
                                required>
@@ -60,7 +63,8 @@
                               type="text"
                                id="publishedDate" 
                                class="form-control"
-                               ngModel
+                               #publishedDate="ngModel"
+                                ngModel
                                name="publishedDate"
                                required>
                            </div>

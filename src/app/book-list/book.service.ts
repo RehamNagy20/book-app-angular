@@ -6,6 +6,12 @@ import { Book } from "./book.model";
 import { addDoc, collection, collectionData, deleteDoc, doc, docData, Firestore} from "@angular/fire/firestore";
 import { updateDoc } from "firebase/firestore";
 
+/**
+ * Service to manage book data.
+ * 
+ * @service
+ */
+
 @Injectable({providedIn:'root'})
 export class BookService{
     private collectionName = 'books';
@@ -19,6 +25,13 @@ export class BookService{
             console.error("Error adding document: ", error);
           });
     }
+    
+/**
+   * Gets the list of books.
+   * 
+   * @returns {Array} The list of books.
+   */
+
     fetchBooks():Observable<Book[]>{
         return collectionData( collection(this.firesotre,this.collectionName), 
         { idField: 'id' }) as Observable<Book[]>;

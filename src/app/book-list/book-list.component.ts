@@ -5,42 +5,54 @@ import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 
 
+/**
+ * Component to display a list of books.
+ * 
+ * @component
+ */
+
 @Component({
   selector: 'app-book-list',
   standalone:false,
   templateUrl: './book-list.component.html',
   styleUrl: './book-list.component.css'
 })
+/**
+ * * BookListComponent is responsible for displaying a list of books and handling book creation.
+ */
 export class BookListComponent implements OnInit {
-    ngOnInit() {
-        //throw new Error('Method not implemented.');
-    }
+    
 
   @ViewChild ('f') signupForm!:NgForm;
   books!:Book[];
-  constructor(private bookService:BookService
-    ,private router:Router
-    
-    ){
-    this.bookService.fetchBooks().subscribe((books: Book[]) => {
+  book:Book={
+    id: '',
+    title: '',
+    auther: '',
+    genre: '',
+    price: '',
+    publishedDate: new Date()
+  };
+  
+  submitted=false;
+   /**
+   * Creates an instance of BookListComponent.
+   * 
+   * @param {BookService} bookService - The service to manage book data.
+   */
+
+  constructor(private bookService:BookService,private router:Router){}
+
+/**
+   * Initializes the component and loads the list of books.
+   */
+
+ ngOnInit() {
+   this.bookService.fetchBooks().subscribe((books: Book[]) => {
       this.books = books;
       
     });
-    
-   
   }
- 
-  book={
-    title:'',
-    auther:'',
-    genre:'',
-    price:'',
-    publishedDate:new Date()
-  }
-  submitted=false;
-  
-
-
  selectedBook(book:Book){
   this.router.navigate(['/book',book.id]);
  }
