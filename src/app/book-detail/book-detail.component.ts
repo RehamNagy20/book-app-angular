@@ -1,8 +1,8 @@
-import { Component, ViewChild} from '@angular/core';
+import { Component} from '@angular/core';
 import type { Book } from '../book-list/book.model';
 import { ActivatedRoute } from '@angular/router';
 import { BookService } from '../book-list/book.service';
-import { NgForm ,FormsModule} from '@angular/forms';
+
 
 
 /**
@@ -20,18 +20,7 @@ import { NgForm ,FormsModule} from '@angular/forms';
 
 export class BookDetailComponent {
   bookId:string='';
-  book?:Book;
-  @ViewChild ('f') signupForm!:NgForm;
-  book1:Book={
-    id: '',
-    title: '',
-    auther: '',
-    genre: '',
-    price: '',
-    publishedDate: new Date()
-  };
-  submitted=false;
-  
+  book?:Book;  
   constructor(private route:ActivatedRoute,private bookService:BookService){}
 
   ngOnInit(): void {
